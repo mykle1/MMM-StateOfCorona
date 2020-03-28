@@ -1,0 +1,53 @@
+/* Copy and paste any or all of these css entries into your custom.css file inside your
+ * css folder. The functions are annotated to make things as easy as possible for you.
+ * Use any colors you want! For example - "http://htmlcolorcodes.com/color-picker/"
+ * Pick your color, copy and paste the HEX number. Example - #62FF00 = bright green.
+ */
+
+.MMM-StateOfCorona .header {
+  color: cyan;                  /* Color the header text. Default is white. */
+  text-align: center;           /* Align the header text. (left, center, right) */
+}
+
+.MMM-StateOfCorona .date {
+  color: cyan;                  /* Color the date text. Default is white. */
+  text-align: center;           /* Align the date text. (left, center, right) */
+}
+
+.MMM-StateOfCorona .state {
+  color: cyan;                  /* Color the state text. Default is white. */
+  text-align: center;           /* Align the state text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want state text */
+}
+
+.MMM-StateOfCorona .totalCases {
+  color: cyan;                  /* Color the totalCases text. Default is white. */
+  text-align: center;           /* Align the totalCases text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want totalCases text */
+}
+
+.MMM-StateOfCorona .spacers {
+  color: cyan;                  /* Color the spacers text. Default is white. */
+  text-align: center;           /* Align the spacers text. (left, center, right) */
+}
+
+.MMM-StateOfCorona .counties {
+  color: cyan;                  /* Color the counties text. Default is white. */
+  text-align: center;           /* Align the counties text. (left, center, right) */
+}
+
+.MMM-StateOfCorona .cases {
+  color: cyan;                  /* Color the cases text. Default is white. */
+  text-align: center;           /* Align the cases text. (left, center, right) */
+}
+
+.MMM-StateOfCorona .county {
+  color: cyan;                  /* Color the county text. Default is white. */
+  text-align: center;           /* Align the county text. (left, center, right) */
+}
+
+.MMM-StateOfCorona .deaths {
+  color: cyan;                  /* Color the deaths text. Default is white. */
+  text-align: center;           /* Align the deaths text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want deaths text */
+}
