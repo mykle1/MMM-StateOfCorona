@@ -15,9 +15,9 @@
 
 * `git clone https://github.com/mykle1/MMM-StateOfCorona` into the `~/MagicMirror/modules` directory.
 
-* cd MMM-StateOfCorona
+* `cd MMM-StateOfCorona`
 
-* 'npm install'
+* `npm install`
 
 * Annotated .css file included for your convenience.
 
