@@ -1,0 +1,22 @@
+{
+  "name": "mmm-stateofcorona",
+  "version": "1.0.0",
+  "description": "CoronaVirus stats by U.S. states",
+  "main": "MMM-StateOfCorona.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mykle1/MMM-StateOfCorona.git"
+  },
+  "author": "Mykle1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mykle1/MMM-StateOfCorona/issues"
+  },
+  "homepage": "https://github.com/mykle1/MMM-StateOfCorona#readme",
+  "dependencies": {
+    "unirest": "latest"
+  }
+}

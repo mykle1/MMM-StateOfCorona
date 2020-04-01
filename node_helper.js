@@ -6,6 +6,7 @@
  */
 const NodeHelper = require('node_helper');
 const request = require('request');
+var unirest = require("unirest");
 
 module.exports = NodeHelper.create({
 
@@ -15,22 +16,23 @@ module.exports = NodeHelper.create({
 
 
     getStates: function(url) {
-        request({
-            url: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/johns_hopkins_united_states_latest.php",
-            qs: {
-                state: this.config.state
-            },
-            method: 'GET',
-            headers: {
-                'x-rapidapi-key': this.config.apiKey,
-                'x-rapidapi-host': 'coronavirus-monitor.p.rapidapi.com',
-            },
-        }, (error, response, body) => {
-            var result = JSON.parse(body);
-            // console.log(result);
-            this.sendSocketNotification("STATES_RESULT", result);
-        });
-    },
+     var self = this;
+      var req = unirest("GET", "https://coronavirus-monitor.p.rapidapi.com/coronavirus/johns_hopkins_latest_usa_statistic_by_state.php");
+
+      req.query({
+      	"state": this.config.state
+      });
+      req.headers({
+      	"x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
+      	"x-rapidapi-key": this.config.apiKey
+      });
+      req.end(function (res) {
+      	if (res.error) throw new Error(res.error);
+         var result = JSON.parse(res.body);
+        self.sendSocketNotification("STATES_RESULT", result);
+      	//console.log(res.body);
+      });
+},
 
 
     socketNotificationReceived: function(notification, payload) {

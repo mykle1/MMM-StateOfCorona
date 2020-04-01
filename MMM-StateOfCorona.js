@@ -34,7 +34,7 @@ Module.register("MMM-StateOfCorona", {
 
         //  Set locale.
         this.states = {};
-        this.activeItem = 1;
+        this.activeItem = 0;
         this.rotateInterval = null;
         this.scheduleUpdate();
     },
@@ -58,23 +58,23 @@ Module.register("MMM-StateOfCorona", {
             wrapper.appendChild(header);
         }
 
-        // date and time
-        var date = document.createElement("div");
-        date.classList.add("xsmall", "bright", "date");
-        date.innerHTML = moment().local().format('MMMM DD, YYYY ~ h:mm a');
-        //  moment.utc(this.World.updated).local().format('MMMM DD, YYYY ~ h:mm a')
-        wrapper.appendChild(date);
+        // // date and time
+        // var date = document.createElement("div");
+        // date.classList.add("xsmall", "bright", "date");
+        // date.innerHTML = moment().local().format('MMMM DD, YYYY ~ h:mm a');
+        // //  moment.utc(this.World.updated).local().format('MMMM DD, YYYY ~ h:mm a')
+        // wrapper.appendChild(date);
 
-        // state
+        // state name
         var location = document.createElement("div");
         location.classList.add("medium", "bright", "state");
-        location.innerHTML = this.states.state;
+        location.innerHTML = this.states[0].state_name;
         wrapper.appendChild(location);
 
         //totalCases
         var totalCases = document.createElement("div");
         totalCases.classList.add("medium", "bright", "totalCases");
-        totalCases.innerHTML = this.states.usa_cases_by_state["0"].cases_number + " total cases";
+        totalCases.innerHTML = this.states[0].cases_number + " total cases";
         wrapper.appendChild(totalCases);
 
         //spacer
@@ -85,8 +85,8 @@ Module.register("MMM-StateOfCorona", {
 
 
 
-        // loop through the obects
-        var info = this.states.usa_cases_by_state;
+        // loop through the cases obects
+        var info = this.states;
         var keys = Object.keys(info);
         if (keys.length > 0) {
             if (this.activeItem >= keys.length) {
@@ -116,7 +116,8 @@ Module.register("MMM-StateOfCorona", {
         spacer.innerHTML = "~ ~ ~";
         wrapper.appendChild(spacer);
 
-        var dead = this.states.usa_deaths;
+        // loop through the deaths object
+        var dead = this.deaths;
         var keys = Object.keys(dead);
         if (keys.length > 0) {
             if (this.activeItem >= keys.length) {
@@ -142,9 +143,11 @@ Module.register("MMM-StateOfCorona", {
     },
 
     processStates: function(data) {
-        this.states = data;
+        this.deaths = data.usa_deaths;
+        this.states = data.usa_cases_by_state;
         this.loaded = true;
-        console.log(this.states);
+        //console.log(this.states);
+        //console.log(this.deaths);
     },
 
     scheduleCarousel: function() {
