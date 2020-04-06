@@ -17,7 +17,7 @@ Module.register("MMM-StateOfCorona", {
         initialLoadDelay: 1250,
         retryDelay: 2500,
         rotateInterval: 30 * 1000,
-        updateInterval: 15 * 60 * 1000,
+        updateInterval: 60 * 60 * 1000,
     },
 
     getStyles: function() {
@@ -74,8 +74,14 @@ Module.register("MMM-StateOfCorona", {
         //totalCases
         var totalCases = document.createElement("div");
         totalCases.classList.add("medium", "bright", "totalCases");
-        totalCases.innerHTML = this.states[0].cases_number + " total cases";
+        totalCases.innerHTML = parseFloat(this.states[0].cases_number).toLocaleString() + " total cases";
         wrapper.appendChild(totalCases);
+
+        // record date
+        var record_date = document.createElement("div");
+        record_date.classList.add("xsmall", "bright", "record_date");
+        record_date.innerHTML = "Date of record " + this.states[0].record_date;
+        wrapper.appendChild(record_date);
 
         //spacer
         var spacer = document.createElement("div");
@@ -106,7 +112,7 @@ Module.register("MMM-StateOfCorona", {
             // cases
             var cases = document.createElement("div");
             cases.classList.add("small", "bright", "cases");
-            cases.innerHTML = area.cases_number + " cases";
+            cases.innerHTML = parseFloat(area.cases_number).toLocaleString() + " cases";
             wrapper.appendChild(cases);
         }
 
@@ -135,7 +141,7 @@ Module.register("MMM-StateOfCorona", {
             // deaths by county
             var deaths = document.createElement("div");
             deaths.classList.add("small", "bright", "deaths");
-            deaths.innerHTML = doa.death_cases + " deaths";
+            deaths.innerHTML = parseFloat(doa.death_cases).toLocaleString() + " deaths";
             wrapper.appendChild(deaths);
 
         }
@@ -146,8 +152,8 @@ Module.register("MMM-StateOfCorona", {
         this.deaths = data.usa_deaths;
         this.states = data.usa_cases_by_state;
         this.loaded = true;
-        //console.log(this.states);
-        //console.log(this.deaths);
+        // console.log(this.states);
+        // console.log(this.deaths);
     },
 
     scheduleCarousel: function() {
